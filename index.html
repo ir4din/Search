@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>سامانه جستجوی دانش‌آموزان و کلاس‌ها</title>
   <meta name="theme-color" content="#0d1117" />
   <style>
@@ -111,17 +109,9 @@
     }
 
     @keyframes float {
-      0% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      50% {
-        transform: translate(40px, 30px) scale(1.08);
-      }
-
-      100% {
-        transform: translate(-30px, 50px) scale(0.95);
-      }
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.08); }
+      100% { transform: translate(-30px, 50px) scale(0.95); }
     }
 
     /* Main Container */
@@ -367,27 +357,19 @@
       border-radius: 18px;
       padding: 14px 18px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
       transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
       animation: fadeIn 0.25s ease-out;
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(6px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .student-item:hover,
-    .student-item:active {
+    .student-item:hover, .student-item:active {
       background: var(--glass-bg-hover);
       border-color: rgba(255, 255, 255, 0.22);
       transform: translateY(-2px);
@@ -399,7 +381,7 @@
       align-items: center;
       gap: 12px;
       min-width: 0;
-      flex: 1;
+      width: 100%;
     }
 
     .student-avatar {
@@ -426,6 +408,8 @@
       overflow: hidden;
       text-overflow: ellipsis;
       line-height: 1.4;
+      flex: 1;
+      min-width: 0;
     }
 
     .class-badge {
@@ -441,7 +425,21 @@
       border-radius: 999px;
       white-space: nowrap;
       flex-shrink: 0;
+      align-self: flex-start;
+      margin-inline-start: 54px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 480px) {
+      .class-badge {
+        margin-inline-start: 0;
+        font-size: 0.78rem;
+        padding: 5px 12px;
+      }
+      .student-item {
+        padding: 13px 14px;
+        gap: 8px;
+      }
     }
 
     .class-badge-icon {
@@ -502,27 +500,22 @@
       body {
         padding: 10px 10px 24px;
       }
-
       .glass-card {
         border-radius: 22px;
         padding: 18px 14px;
       }
-
       .search-input {
         height: 52px;
         font-size: 0.95rem;
       }
-
       .student-item {
         padding: 12px 14px;
       }
-
       .student-avatar {
         width: 38px;
         height: 38px;
         font-size: 0.85rem;
       }
-
       .class-badge {
         padding: 5px 10px;
         font-size: 0.75rem;
@@ -530,7 +523,6 @@
     }
   </style>
 </head>
-
 <body>
 
   <!-- Animated Glowing Background Blobs -->
@@ -542,24 +534,27 @@
 
   <div class="container">
     <div class="glass-card">
-
+      
       <!-- School Logo & Header -->
       <div class="header">
         <div class="logo-container">
-          <img src="logo/logo.jpg" alt="لوگوی مدرسه" class="school-logo"
-            onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';" />
+          <img 
+            src="logo/logo.jpg" 
+            alt="لوگوی مدرسه" 
+            class="school-logo" 
+            onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';" 
+          />
           <div id="logo-fallback" class="logo-fallback" style="display: none;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
             </svg>
           </div>
         </div>
 
-        <h1 class="app-title">استعلام کلاس دبیرستان شهید باقری</h1>
+        <h1 class="app-title">استعلام کلاس بندی دبیرستان باقری</h1>
         <p class="app-subtitle">جستجوی سریع بر اساس نام، نام خانوادگی یا پایه تحصیلی</p>
-
+        
         <div class="stats-badge">
           <span>247</span> دانش‌آموز ثبت شده
         </div>
@@ -567,16 +562,22 @@
 
       <!-- Search Box -->
       <div class="search-wrapper">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="searchInput" class="search-input" placeholder="نام یا نام خانوادگی را وارد کنید..."
-          autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="نام یا نام خانوادگی را وارد کنید..." 
+          autocomplete="off" 
+          autocorrect="off" 
+          autocapitalize="off" 
+          spellcheck="false"
+        />
         <button id="clearBtn" class="clear-btn" aria-label="پاک کردن جستجو">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-            stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -597,7 +598,7 @@
 
     <!-- Footer -->
     <div class="footer">
-      طراحی و اجرا توسط تیم پشتیبانی دبیرستان شهید حسن باقری
+     طراحی و اجرا توسط تیم پشتیبانی دبیرستان شهید حسن باقری
     </div>
   </div>
 
@@ -641,7 +642,7 @@
     const resultsCount = document.getElementById('resultsCount');
     const resultsContainer = document.getElementById('resultsContainer');
 
-    // Escape HTML special characters to prevent injection
+        // Escape HTML special characters to prevent injection
     function escapeHTML(str) {
       return String(str)
         .replace(/&/g, '&amp;')
@@ -672,7 +673,7 @@
         // Skip zero-width and control/invisible characters
         const code = ch.codePointAt(0);
         if (code === 0x200b || code === 0x200c || code === 0x200d || code === 0x200e ||
-          code === 0x200f || code === 0xfeff || code === 0x0640) {
+            code === 0x200f || code === 0xfeff || code === 0x0640) {
           continue; // removed from normalized text (no map entry)
         }
         ch = ch.toLowerCase();
@@ -680,7 +681,7 @@
         out += ch;
         map.push(i);
       }
-      return {norm: out, map: map};
+      return { norm: out, map: map };
     }
 
     function highlightMatch(text, query) {
@@ -689,7 +690,7 @@
       const q = String(query || '').trim();
       if (!q) return escapeHTML(text);
 
-      const {norm, map} = normalizeWithMap(text);
+      const { norm, map } = normalizeWithMap(text);
       const tokens = normalizeWithMap(q).norm.split(' ').filter(t => t.length > 0);
       if (!tokens.length || !norm) return escapeHTML(text);
 
@@ -727,7 +728,7 @@
       return html;
     }
 
-    function renderInitialState() {
+function renderInitialState() {
       resultsCount.innerHTML = 'همه دانش‌آموزان (<b>' + dataset.length + '</b> نفر)';
       renderList(dataset.slice(0, 30), false);
     }
@@ -788,9 +789,9 @@
       const queryTokens = normQuery.split(' ').filter(t => t.length > 0);
 
       const filtered = dataset.filter(item => {
-        return queryTokens.every(token =>
-          item.normFull.includes(token) ||
-          item.normReverse.includes(token) ||
+        return queryTokens.every(token => 
+          item.normFull.includes(token) || 
+          item.normReverse.includes(token) || 
           item.normClass.includes(token)
         );
       });
@@ -811,5 +812,4 @@
     renderInitialState();
   </script>
 </body>
-
 </html>
